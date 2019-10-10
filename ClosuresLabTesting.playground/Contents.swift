@@ -16,3 +16,19 @@ import UIKit
 func multiples(of num: Int, in arr: [Int]) -> [Int] {
     return arr.filter({$0 % num == 0})
 }
+
+let values = [3, 4, 5]
+let sum = values.reduce(0, +)
+print(sum)
+
+let subtraction = values.reduce(0, -)
+print(subtraction)
+
+let values1 = [7, 3, 10]
+let avg: Int = values1.reduce(0){ $0 + ( $1 / values1.count)}
+print(avg)
+
+let values2 = [7,20,15]
+print(values2.filter({$0 % 2 == 1}))
+print(values2.map({$0 * $0}))
+print(values2.reduce(0, +))
