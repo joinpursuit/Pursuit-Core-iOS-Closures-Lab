@@ -4,87 +4,126 @@ import UIKit
 
 // Write a function named applyKTimes that takes an integer K and a closure and calls the closure K times. The closure will not take any parameters and will not have a return value.
 
-
-// Your function here
+func applyKTimes(integer: Int,closure: () -> Void) -> Void{
+    for _ in 1...integer{
+        closure()
+    }
+}
 
 // Uncomment out the following lines to check your solution
 
-//var myVal = 0
-//applyKTimes(5) {
-//    myVal += 1
-//}
-//assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
+var myVal = 0
+applyKTimes(integer: 5) {
+    myVal += 1
+}
+assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
 
 
 // Question Two
 
 // Write a function called multiples(of:in) that takes in an array of Ints and returns all of the Ints that are a multiple of a given number n.  Use filter in your function.
 
-// Your function here
+func multiples(of: Int, input: [Int]) -> [Int] {
+    var multiplesOfThree: [Int] = []
+    multiplesOfThree = input.filter(){ (a) -> Bool in return a % of == 0}
+    return multiplesOfThree
+}
 
 // Uncomment out the following lines to check your solution
 
-//let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
-//let expectedOutputTwo = [3, 6, 9, 3, 12]
-//let outputTwo = multiples(of: 3, in: numbers)
-//assert(outputTwo == expectedOutput, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
+let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
+let expectedOutputTwo = [3, 6, 9, 3, 12]
+let outputTwo = multiples(of: 3, input: numbers)
+assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
 
 
 // Question Three
 
-// Write a function called largestValue(in:) that finds the largest Int in an array of Ints. Use reduce to solve this exercise.
+// Write a function called largestValue(input:) that finds the largest Int in an array of Ints. Use reduce to solve this exercise.
 
-// Your function here
+func largestValue(input: [Int]) -> Int {
+    guard input.count > 0 else {
+        return 0
+    }
+    let largestNum = input.reduce(0,{ (a,b) -> Int in if(a > b){return a}else{return b}  })
+    
+    return(largestNum)
+}
 
 // Uncomment out the following lines to check your solution
 
-//let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
-//let expectedOutputThree = 9
-//let outputThree = largestValue(in: moreNumbers)
-//assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutputThree), but found \(outputThree)")
+let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
+let expectedOutputThree = 9
+let outputThree = largestValue(input: moreNumbers)
+assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutputThree), but found \(outputThree)")
 
 
 // Question Four
 
-// Write a function called sortedNamesByLastName(in:) that takes in an array of tuples of type (String, String) and returns an array of tuples sorted by last name.
+// Write a function called sortedNamesByLastName(input:) that takes in an array of tuples of type (String, String) and returns an array of tuples sorted by last name.
 
-// Your function here
+func sortedNamesByLastName(input: [(String, String)]) -> [(String, String)]{
+    var tupleArray: [(String, String)]
+    tupleArray = input.sorted(by: {(a,b) -> Bool in
+        if(a.1 < b.1){
+            return true
+        } else{
+            return false
+        }
+    })
+    
+    return tupleArray
+}
 
 // Uncomment out the following lines to check your solution
 
-//let firstAndLastTuples = [
-//    ("Johann S.", "Bach"),
-//    ("Claudio", "Monteverdi"),
-//    ("Duke", "Ellington"),
-//    ("W. A.", "Mozart"),
-//    ("Nicolai","Rimsky-Korsakov"),
-//    ("Scott","Joplin"),
-//    ("Josquin","Des Prez")
-//]
-//let expectedOutputFour = [
-//    ("Johann S.", "Bach"),
-//    ("Josquin","Des Prez"),
-//    ("Duke", "Ellington"),
-//    ("Scott","Joplin"),
-//    ("Claudio", "Monteverdi"),
-//    ("W. A.", "Mozart"),
-//    ("Nicolai","Rimsky-Korsakov")
-//]
+let firstAndLastTuples = [
+    ("Johann S.", "Bach"),
+    ("Claudio", "Monteverdi"),
+    ("Duke", "Ellington"),
+    ("W. A.", "Mozart"),
+    ("Nicolai","Rimsky-Korsakov"),
+    ("Scott","Joplin"),
+    ("Josquin","Des Prez")
+]
+let expectedOutputFour = [
+    ("Johann S.", "Bach"),
+    ("Josquin","Des Prez"),
+    ("Duke", "Ellington"),
+    ("Scott","Joplin"),
+    ("Claudio", "Monteverdi"),
+    ("W. A.", "Mozart"),
+    ("Nicolai","Rimsky-Korsakov")
+]
 
-//let outputFour = sortedNamesByLastName(in: firstAndLastTuples)
-//assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected output to be \(expectedOutputFour), but found \(outputFour)")
+let outputFour = sortedNamesByLastName(input: firstAndLastTuples)
+assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected output to be \(expectedOutputFour), but found \(outputFour)")
 
 
 // Question Five
 
-// Write a function called sumOfSquaresOfOddNumbers(in:) that returns the sum of the squares of all the odd numbers from an array of Ints.  Use filter, map and reduce in your function.
+// Write a function called sumOfSquaresOfOddNumbers(input:) that returns the sum of the squares of all the odd numbers from an array of Ints.  Use filter, map and reduce in your function.
 
-// Your function here
+func sumOfSquaresOfOddNumbers(input: [Int]) -> Int {
+    
+    guard input.count > 0 else {
+        return 0
+    }
+    
+    var sumOfSquares: Int = 0
+    var tempArray: [Int] = []
+    
+    tempArray = input.filter(){(a: Int) -> Bool in if(a % 2 == 1){return true}else{return false}}
+    tempArray = tempArray.map(){(a: Int) -> Int in return a * a}
+    sumOfSquares = tempArray.reduce(0, {(a: Int,b: Int) -> Int in return a + b})
+    
+    return sumOfSquares
+}
 
 // Uncomment out the following lines to check your solution
 
-//let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
-//let expectedOutputFive = 35 // Explanation: 1 + 9 + 25 -> 35
-//let outputFive = sumOfSquaresOfOddNumbers(in: evenMoreNumbers)
-//assert(outputFive == expectedOutputFive, "Expected output to be \(expectedOutputFive), but found \(outputFive)")
+let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
+let expectedOutputFive = 35 // Explanation: 1 + 9 + 25 -> 35
+let outputFive = sumOfSquaresOfOddNumbers(input: evenMoreNumbers)
+assert(outputFive == expectedOutputFive, "Expected output to be \(expectedOutputFive), but found \(outputFive)")
 
