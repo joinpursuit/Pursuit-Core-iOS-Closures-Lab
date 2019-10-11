@@ -29,8 +29,7 @@ assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
 func multiples(of: Int, in: [Int]) -> [Int] {
     return `in`.filter( { $0 % of == 0} )
 }
- // question says return array of ints that are multuples of n
-// Uncomment out the following lines to check your solution
+
 
 let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
 let expectedOutputTwo = [3, 6, 9, 3, 12]
@@ -43,16 +42,6 @@ assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTw
 // Write a function called largestValue(in:) that finds the largest Int in an array of Ints. Use reduce to solve this exercise.
 
 // Your function here
-
-//let largestValue = { (in: [Int]) -> (Int) in
-//    `in`.reduce(`in`[0]) {
-//       if $0 > $1 {
-//           return $0
-//       } else {
-//           return $1
-//       }
-//}
-//   }
 
 
 func largestValue(in arr: [Int]) -> Int {
