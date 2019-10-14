@@ -6,14 +6,19 @@ import UIKit
 
 
 // Your function here
+func applyKTimes(k : Int, closure : () -> ())  {
+    for _ in 1...k  {
+        closure()
+    }
+}
 
 // Uncomment out the following lines to check your solution
 
-//var myVal = 0
-//applyKTimes(5) {
-//    myVal += 1
-//}
-//assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
+var myVal = 0
+applyKTimes(k: 5) {
+    myVal += 1
+}
+assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
 
 
 // Question Two
@@ -21,13 +26,17 @@ import UIKit
 // Write a function called multiples(of:in) that takes in an array of Ints and returns all of the Ints that are a multiple of a given number n.  Use filter in your function.
 
 // Your function here
+func multiples(of : Int, arr : [Int]) -> [Int] {
+    let sameMultiples = arr.filter {$0 % of == 0}
+    return sameMultiples
+}
 
 // Uncomment out the following lines to check your solution
 
-//let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
-//let expectedOutputTwo = [3, 6, 9, 3, 12]
-//let outputTwo = multiples(of: 3, in: numbers)
-//assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
+let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
+let expectedOutputTwo = [3, 6, 9, 3, 12]
+let outputTwo = multiples(of: 3, arr: numbers)
+assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
 
 
 // Question Three
@@ -35,13 +44,24 @@ import UIKit
 // Write a function called largestValue(in:) that finds the largest Int in an array of Ints. Use reduce to solve this exercise.
 
 // Your function here
+func largestValue(arr : [Int]) -> Int {
+    let largestVal = arr.reduce(0)  { num1,num2 in
+        if num1 > num2 {
+            return num1
+        }
+        else {return num2}
+    }
+    
+    return largestVal
 
-// Uncomment out the following lines to check your solution
+}
 
-//let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
-//let expectedOutputThree = 9
-//let outputThree = largestValue(in: moreNumbers)
-//assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutputThree), but found \(outputThree)")
+ //Uncomment out the following lines to check your solution
+
+let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
+let expectedOutputThree = 9
+let outputThree = largestValue(arr: moreNumbers)
+assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutputThree), but found \(outputThree)")
 
 
 // Question Four
@@ -49,6 +69,10 @@ import UIKit
 // Write a function called sortedNamesByLastName(in:) that takes in an array of tuples of type (String, String) and returns an array of tuples sorted by last name.
 
 // Your function here
+func sortedNamesByLastName(tupBroni : [(String, String)])   {
+    
+
+}
 
 // Uncomment out the following lines to check your solution
 
