@@ -61,30 +61,34 @@ assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutp
 // Write a function called sortedNamesByLastName(in:) that takes in an array of tuples of type (String, String) and returns an array of tuples sorted by last name.
 
 // Your function here
+func sortedNamesByLastName(in names: [(String, String)]) -> [(String, String)] {
+    return names.sorted(by: { $0.1 < $1.1 })
+}
+
 
 // Uncomment out the following lines to check your solution
 
-//let firstAndLastTuples = [
-//    ("Johann S.", "Bach"),
-//    ("Claudio", "Monteverdi"),
-//    ("Duke", "Ellington"),
-//    ("W. A.", "Mozart"),
-//    ("Nicolai","Rimsky-Korsakov"),
-//    ("Scott","Joplin"),
-//    ("Josquin","Des Prez")
-//]
-//let expectedOutputFour = [
-//    ("Johann S.", "Bach"),
-//    ("Josquin","Des Prez"),
-//    ("Duke", "Ellington"),
-//    ("Scott","Joplin"),
-//    ("Claudio", "Monteverdi"),
-//    ("W. A.", "Mozart"),
-//    ("Nicolai","Rimsky-Korsakov")
-//]
+let firstAndLastTuples = [
+    ("Johann S.", "Bach"),
+    ("Claudio", "Monteverdi"),
+    ("Duke", "Ellington"),
+    ("W. A.", "Mozart"),
+    ("Nicolai","Rimsky-Korsakov"),
+    ("Scott","Joplin"),
+    ("Josquin","Des Prez")
+]
+let expectedOutputFour = [
+    ("Johann S.", "Bach"),
+    ("Josquin","Des Prez"),
+    ("Duke", "Ellington"),
+    ("Scott","Joplin"),
+    ("Claudio", "Monteverdi"),
+    ("W. A.", "Mozart"),
+    ("Nicolai","Rimsky-Korsakov")
+]
 
-//let outputFour = sortedNamesByLastName(in: firstAndLastTuples)
-//assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected output to be \(expectedOutputFour), but found \(outputFour)")
+let outputFour = sortedNamesByLastName(in: firstAndLastTuples)
+assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected output to be \(expectedOutputFour), but found \(outputFour)")
 
 
 // Question Five
@@ -93,10 +97,16 @@ assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutp
 
 // Your function here
 
+func sumOfSquaresOfOddNumbers(in arr: [Int]) -> Int {
+    return arr.filter { $0 % 2 == 1 }
+              .map { $0 * $0 }
+              .reduce(0, +)
+}
+
 // Uncomment out the following lines to check your solution
 
-//let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
-//let expectedOutputFive = 35 // Explanation: 1 + 9 + 25 -> 35
-//let outputFive = sumOfSquaresOfOddNumbers(in: evenMoreNumbers)
-//assert(outputFive == expectedOutputFive, "Expected output to be \(expectedOutputFive), but found \(outputFive)")
+let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
+let expectedOutputFive = 35 // Explanation: 1 + 9 + 25 -> 35
+let outputFive = sumOfSquaresOfOddNumbers(in: evenMoreNumbers)
+assert(outputFive == expectedOutputFive, "Expected output to be \(expectedOutputFive), but found \(outputFive)")
 
