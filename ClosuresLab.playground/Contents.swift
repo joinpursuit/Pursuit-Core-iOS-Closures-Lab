@@ -20,7 +20,7 @@ func applyKTimes(_ k: Int, _ closure: () -> ()) {
 
 var myVal = 0
 applyKTimes(5) {
-    myVal += 1 // is this the closure? 
+    myVal += 1 // is this the closure?
 }
 assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
 
@@ -29,21 +29,44 @@ assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
 
 // Write a function called multiples(of:in) that takes in an array of Ints and returns all of the Ints that are a multiple of a given number n.  Use filter in your function.
 
-// Your function here
+// Answer:
+
+func multiples(of n: Int, in numArray: [Int]) -> [Int] {
+    return numArray.filter { (num) -> Bool in
+        num % n == 0
+    }
+}
 
 // Uncomment out the following lines to check your solution
 
-//let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
-//let expectedOutputTwo = [3, 6, 9, 3, 12]
-//let outputTwo = multiples(of: 3, in: numbers)
-//assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
+let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
+let expectedOutputTwo = [3, 6, 9, 3, 12]
+let outputTwo = multiples(of: 3, in: numbers)
+assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
 
 
 // Question Three
 
 // Write a function called largestValue(in:) that finds the largest Int in an array of Ints. Use reduce to solve this exercise.
 
-// Your function here
+// Answer:
+
+func largestValue(in numbers: [Int]) -> Int {
+    
+    guard let first = numbers.first else { return -1} // to get the first value of the array, if the array is empty it will not continue and will return -1.
+    
+    // using trailing closure syntax to solve reduce excercise
+
+    let result = numbers.reduce(first) { (preResult, currentValue) in // between these two curly brackets is the closure that we are providing the reduce function
+        if preResult > currentValue {
+            return preResult
+        } else {
+            return currentValue
+        }
+    }
+    return result
+}
+
 
 // Uncomment out the following lines to check your solution
 
