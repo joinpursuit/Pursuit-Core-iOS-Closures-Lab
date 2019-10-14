@@ -5,50 +5,74 @@ import UIKit
 // Write a function named applyKTimes that takes an integer K and a closure and calls the closure K times. The closure will not take any parameters and will not have a return value.
 
 
-// Your function here
+func applyKTimes (_ k: Int, _ closure: () -> ()) {
+    for _ in 1...k {
+        closure()
+    }
+}
+
 
 // Uncomment out the following lines to check your solution
 
-//var myVal = 0
-//applyKTimes(5) {
-//    myVal += 1
-//}
-//assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
+var myVal = 0
+applyKTimes(5) {
+    myVal += 1
+}
+assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
 
 
 // Question Two
 
 // Write a function called multiples(of:in) that takes in an array of Ints and returns all of the Ints that are a multiple of a given number n.  Use filter in your function.
 
-// Your function here
+func multiples(of num: Int, in numbers: [Int]) -> [Int] {
+      let filteredNums = numbers.filter { (n) -> Bool in
+         n % num == 0
+        }
+     return filteredNums
+        
+    }
+    
+
 
 // Uncomment out the following lines to check your solution
 
-//let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
-//let expectedOutputTwo = [3, 6, 9, 3, 12]
-//let outputTwo = multiples(of: 3, in: numbers)
-//assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
+let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
+let expectedOutputTwo = [3, 6, 9, 3, 12]
+let outputTwo = multiples(of: 3, in: numbers)
+assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
 
 
 // Question Three
 
 // Write a function called largestValue(in:) that finds the largest Int in an array of Ints. Use reduce to solve this exercise.
 
-// Your function here
+func largestValue(in numbers: [Int]) -> Int {
+    var result = 0
+    result = numbers.reduce(0) { currentValue, nextValue in
+        if currentValue > nextValue {
+            return currentValue
+        } else {
+            return nextValue
+        }
+    }
+    return result
+    
+}
 
 // Uncomment out the following lines to check your solution
 
-//let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
-//let expectedOutputThree = 9
-//let outputThree = largestValue(in: moreNumbers)
-//assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutputThree), but found \(outputThree)")
+let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
+let expectedOutputThree = 9
+let outputThree = largestValue(in: moreNumbers)
+assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutputThree), but found \(outputThree)")
 
 
 // Question Four
 
 // Write a function called sortedNamesByLastName(in:) that takes in an array of tuples of type (String, String) and returns an array of tuples sorted by last name.
 
-// Your function here
+
 
 // Uncomment out the following lines to check your solution
 
@@ -78,13 +102,19 @@ import UIKit
 // Question Five
 
 // Write a function called sumOfSquaresOfOddNumbers(in:) that returns the sum of the squares of all the odd numbers from an array of Ints.  Use filter, map and reduce in your function.
-
-// Your function here
+func sumOfSquaresOfOddNumbers(in numbers: [Int]) -> Int {
+    let oddNumbers = numbers.filter { (n) -> Bool in
+        n % 2 != 0}
+    let products = oddNumbers.map{$0 * $0}
+    let sumSquares = products.reduce(0,+)
+    return sumSquares
+}
+        
 
 // Uncomment out the following lines to check your solution
 
-//let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
-//let expectedOutputFive = 35 // Explanation: 1 + 9 + 25 -> 35
-//let outputFive = sumOfSquaresOfOddNumbers(in: evenMoreNumbers)
-//assert(outputFive == expectedOutputFive, "Expected output to be \(expectedOutputFive), but found \(outputFive)")
+let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
+let expectedOutputFive = 35 // Explanation: 1 + 9 + 25 -> 35
+let outputFive = sumOfSquaresOfOddNumbers(in: evenMoreNumbers)
+assert(outputFive == expectedOutputFive, "Expected output to be \(expectedOutputFive), but found \(outputFive)")
 
