@@ -6,6 +6,12 @@ import UIKit
 
 
 // Your function here
+let closure = {}
+func applyKtimes(closures: (), number: Int) {
+    
+}
+applyKtimes(closures: <#T##()#>, number: K)
+
 
 // Uncomment out the following lines to check your solution
 
