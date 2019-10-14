@@ -117,7 +117,7 @@ assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected
 
 // Write a function called sumOfSquaresOfOddNumbers(in:) that returns the sum of the squares of all the odd numbers from an array of Ints.  Use filter, map and reduce in your function.
 
-// Answer: 
+// Answer:
 
 func sumOfSquaresOfOddNumbers(in intArray: [Int]) -> Int {
     var sum = 0
@@ -130,12 +130,6 @@ func sumOfSquaresOfOddNumbers(in intArray: [Int]) -> Int {
     return sum
     }
     
-// print(sumOfSquaresOfOddNumbers(in: list))
-//    }
-    
-//    return sum
-//}
-
 // Uncomment out the following lines to check your solution
 
 let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
