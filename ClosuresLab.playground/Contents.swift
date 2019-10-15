@@ -69,34 +69,38 @@ assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutp
 // Write a function called sortedNamesByLastName(in:) that takes in an array of tuples of type (String, String) and returns an array of tuples sorted by last name.
 
 // Your function here
-func sortedNamesByLastName(tupBroni : [(String, String)])   {
-    
-
+func sortedNamesByLastName(tupBroni : [(String, String)]) -> [(String, String)]   {
+    let sortByLast = tupBroni.sorted(by: {s1, s2 in return s2.1 > s1.1} )
+    return sortByLast
 }
+
 
 // Uncomment out the following lines to check your solution
 
-//let firstAndLastTuples = [
-//    ("Johann S.", "Bach"),
-//    ("Claudio", "Monteverdi"),
-//    ("Duke", "Ellington"),
-//    ("W. A.", "Mozart"),
-//    ("Nicolai","Rimsky-Korsakov"),
-//    ("Scott","Joplin"),
-//    ("Josquin","Des Prez")
-//]
-//let expectedOutputFour = [
-//    ("Johann S.", "Bach"),
-//    ("Josquin","Des Prez"),
-//    ("Duke", "Ellington"),
-//    ("Scott","Joplin"),
-//    ("Claudio", "Monteverdi"),
-//    ("W. A.", "Mozart"),
-//    ("Nicolai","Rimsky-Korsakov")
-//]
+let firstAndLastTuples = [
+    ("Johann S.", "Bach"),
+    ("Claudio", "Monteverdi"),
+    ("Duke", "Ellington"),
+    ("W. A.", "Mozart"),
+    ("Nicolai","Rimsky-Korsakov"),
+    ("Scott","Joplin"),
+    ("Josquin","Des Prez")
+]
 
-//let outputFour = sortedNamesByLastName(in: firstAndLastTuples)
-//assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected output to be \(expectedOutputFour), but found \(outputFour)")
+print(sortedNamesByLastName(tupBroni: firstAndLastTuples))
+
+let expectedOutputFour = [
+    ("Johann S.", "Bach"),
+    ("Josquin","Des Prez"),
+    ("Duke", "Ellington"),
+    ("Scott","Joplin"),
+    ("Claudio", "Monteverdi"),
+    ("W. A.", "Mozart"),
+    ("Nicolai","Rimsky-Korsakov")
+]
+
+let outputFour = sortedNamesByLastName(tupBroni: firstAndLastTuples)
+assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected output to be \(expectedOutputFour), but found \(outputFour)")
 
 
 // Question Five
